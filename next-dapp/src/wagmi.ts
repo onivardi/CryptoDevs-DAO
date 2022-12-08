@@ -1,13 +1,14 @@
 import { getDefaultWallets } from '@rainbow-me/rainbowkit'
-import { configureChains, createClient, defaultChains } from 'wagmi'
+import { configureChains, createClient } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
+import { hardhat } from 'wagmi/chains'
 
-const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
+const { chains, provider, webSocketProvider } = configureChains([hardhat], [
   publicProvider(),
 ])
 
 const { connectors } = getDefaultWallets({
-  appName: 'My wagmi + RainbowKit App',
+  appName: 'CryptoDevs DAO DApp',
   chains,
 })
 
