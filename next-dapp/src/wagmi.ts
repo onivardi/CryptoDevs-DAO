@@ -8,7 +8,7 @@ const { chains, provider, webSocketProvider } = configureChains([hardhat], [
 ])
 
 const { connectors } = getDefaultWallets({
-  appName: 'CryptoDevs DAO DApp',
+  appName: 'CryptoDevs DAO',
   chains,
 })
 
