@@ -9,14 +9,11 @@ type propsTypes = {
 
 export const Navbar = (props: propsTypes) => {
 
-    const [showMobileNav, setShowMobileNav] = React.useState(false);
+    const [active, setActive] = React.useState(false);
 
     function toggleActive() {
-        setShowMobileNav(!showMobileNav)
+        setActive(!active)
     }
-
-
-
 
     return (
         <div className="navbar">
@@ -27,24 +24,22 @@ export const Navbar = (props: propsTypes) => {
                     </a>
                 </div>
 
-                <a onClick={toggleActive} role="button" className={showMobileNav ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false">
+                <a onClick={toggleActive} role="button" className={active ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div className={showMobileNav ? "navbar-menu is-active" : "navbar-menu"}>
+            <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        <div className={showMobileNav ? "buttons is-justify-content-center" : "buttons"}>
+                        <div className={active ? "buttons is-justify-content-center" : "buttons"}>
                             <ConnectButton />
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 }
