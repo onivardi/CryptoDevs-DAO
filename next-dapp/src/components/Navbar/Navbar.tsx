@@ -24,17 +24,23 @@ export const Navbar = (props: propsTypes) => {
                     </a>
                 </div>
 
-                <a onClick={toggleActive} role="button" className={active ? "navbar-burger is-active" : "navbar-burger"} aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
+                <a
+                    onClick={toggleActive}
+                    role="button"
+                    className={`navbar-burger ${active ? "is-active" : ""}`}
+                    aria-label="menu"
+                    aria-expanded="false">
+
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div className={active ? "navbar-menu is-active" : "navbar-menu"}>
+            <div className={`navbar-menu ${active ? "is-active" : ""}`}>
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        <div className={active ? "buttons is-justify-content-center" : "buttons"}>
+                        <div className={`buttons ${active ? "is-justify-content-center" : ""}`}>
                             <ConnectButton />
                         </div>
                     </div>
