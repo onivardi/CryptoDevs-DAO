@@ -1,11 +1,11 @@
-import { Navbar } from '../components'
+import { Navbar, Whitelist } from '../components'
 
 function Page() {
 
   return (
     <>
       <Navbar />
-
+      <Whitelist />
     </>
   )
 }
