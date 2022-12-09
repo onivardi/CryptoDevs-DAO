@@ -12,11 +12,11 @@ export const Navbar = (props: propsTypes) => {
     const [showMobileNav, setShowMobileNav] = React.useState(false);
 
     function toggleActive() {
-        setShowMobileNav( prevState => !prevState)
+        setShowMobileNav(!showMobileNav)
     }
 
 
-    
+
 
     return (
         <div className="navbar">
@@ -33,7 +33,7 @@ export const Navbar = (props: propsTypes) => {
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            
+
             <div className={showMobileNav ? "navbar-menu is-active" : "navbar-menu"}>
                 <div className="navbar-end">
                     <div className="navbar-item">
