@@ -1,11 +1,16 @@
+
 import React from 'react'
-import { useContractRead, useContractWrite, usePrepareContractWrite } from 'wagmi'
+import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite } from 'wagmi'
 import { whitelistABI, whitelistADDRESS } from '../../../CONSTANTS'
 import { WhitelistContent } from './WhitelistContent'
 
 
 
 export const Whitelist = () => {
+
+
+  const account = useAccount()
+  
 
   const whitelistContract = {
     address: whitelistADDRESS,
@@ -21,21 +26,29 @@ export const Whitelist = () => {
     },
     watch: true
   })
+  const { data: isWhitelisted } = useContractRead({
+    ...whitelistContract,
+    functionName: 'whitelistedAddress',
+    args: account.address ? [account.address] : undefined,
+    watch: true
+  })
 
   const { config } = usePrepareContractWrite({
     ...whitelistContract,
     functionName: 'addAddressToWhitelist'
   })
 
-  const { data, isSuccess, write, writeAsync } = useContractWrite(config)
-  {console.log(write)}
+  const { write } = useContractWrite(config)
+  
+  
+
   return (
     <section className="section">
       <div className="container">
         <div className="columns is-centered">
           <div className="column is-5-tablet is-4-desktop">
-            <WhitelistContent numJoined={numAddrWhitelisted} handleJoin={writeAsync}/>
-            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
+            <WhitelistContent numJoined={numAddrWhitelisted} handleJoin={write} isConnected={account.isConnected} isWhitelisted={isWhitelisted}/>
+
           </div>
         </div>
       </div>
